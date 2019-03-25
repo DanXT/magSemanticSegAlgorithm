@@ -1,0 +1,44 @@
+clc;clear all;close all;
+
+if ispc
+
+    load('..\..\data augmentation\1. prepareInput\result\exampler_test.mat');
+else
+    load('../../data augmentation/1. prepareInput/result/exampler_test.mat');
+    load('../../data augmentation/2. generate realizations/results/realizations_test.mat');
+end
+
+realization(:,:,:,end+1) = outtest;
+
+[x,y,z,n] = size(realization);
+
+patches = sampleIMAGES(realization, 64, 1500);
+for i = 1:25
+    subplot(5,5,i)
+    imagesc(uint8(patches(:,:,1:3,i)))
+    axis off
+end
+figure
+for i = 1:25
+    subplot(5,5,i)
+    imagesc(uint8(patches(:,:,4:6,i)))
+    axis off
+end
+figure
+for i = 1:25
+    subplot(5,5,i)
+    imagesc(uint8(patches(:,:,7,i)))
+    axis off
+end
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+testPatches = patches;
+
+return
+if ispc
+    save('results\testPatches.mat', 'testPatches');
+else
+    save('results/testPatches.mat', 'testPatches');
+end
