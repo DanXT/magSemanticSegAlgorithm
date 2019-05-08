@@ -9,24 +9,6 @@ Patz= par.Patz;
 innerPatch = par.innerPatch;
 innerPatchz= par.innerPatchz;
 
-% paste the dual template first. 
-% ---------------------------------------------
-if par.bUseDualTemplate
-    % only for the first multipleGrid.
-    if par.m1 == 2^(par.multipleGrid-1)
-        if par.bPasteDualOnFrozen
-            realization(wx(1):wx(end),wy(1):wy(end),wz(1):wz(end)) = outT;
-        else
-            frozenTemplate      = reshape(frozenRealiz(wx(1):wx(end),wy(1):wy(end),wz(1):wz(end)),1,[]);
-            realizationTemplate = reshape(realization (wx(1):wx(end),wy(1):wy(end),wz(1):wz(end)),1,[]);
-            outT = reshape(outT, 1, []);
-            outT(1,frozenTemplate == 1) = realizationTemplate(1,frozenTemplate == 1);
-            realization(wx(1):wx(end),wy(1):wy(end),wz(1):wz(end)) = ...
-                reshape(outT, wx(end)-wx(1)+1, wy(end)-wy(1)+1, wz(end)-wz(1)+1);
-        end
-    end
-end
-
 frozenTemplate      = reshape(frozenRealiz(wx, wy, wz),1,Pat^2*DimzAll);
 realizationTemplate = reshape(realization (wx, wy, wz),1,Pat^2*DimzAll);
 
