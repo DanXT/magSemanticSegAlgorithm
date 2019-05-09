@@ -24,7 +24,7 @@ opt.Pat  = 21;
 opt.Patz = 1;
 opt.innerPatch      = 9;
 opt.innerPatchz     = 1;
-opt.multipleGrid    = 3;
+opt.MR    = 3;
 % m : number of patterns to be skipped
 opt.m    = 4;
 opt.flip = true;
